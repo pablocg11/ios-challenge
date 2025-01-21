@@ -1,5 +1,5 @@
 //
-//  Advert.swift
+//  AdvertDTO.swift
 //  iosChallengeIdealista
 //
 //  Created by Pablo Castro on 21/1/25.

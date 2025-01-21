@@ -1,5 +1,5 @@
 //
-//  Feature.swift
+//  FeatureDTO.swift
 //  iosChallengeIdealista
 //
 //  Created by Pablo Castro on 21/1/25.
