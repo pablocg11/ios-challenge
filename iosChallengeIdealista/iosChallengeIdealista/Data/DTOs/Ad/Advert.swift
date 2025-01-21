@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Advert: Codable {
+struct AdvertDTO: Codable {
     let propertyCode: String
     let thumbnail: String
     let floor: String?
     let price: Double
-    let priceInfo: PriceInfo
+    let priceInfo: PriceInfoDTO
     let propertyType: String
     let operation: String
     let size: Double
@@ -28,6 +28,6 @@ struct Advert: Codable {
     let latitude: Double
     let longitude: Double
     let description: String
-    let multimedia: Multimedia
-    let features: Features
+    let multimedia: MultimediaDTO
+    let features: FeaturesDTO
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Features: Codable {
+struct FeaturesDTO: Codable {
     let hasAirConditioning: Bool
     let hasBoxRoom: Bool
 }

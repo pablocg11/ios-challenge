@@ -1,5 +1,5 @@
 //
-//  Multimedia.swift
+//  HTTPMethod.swift
 //  iosChallengeIdealista
 //
 //  Created by Pablo Castro on 21/1/25.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Multimedia: Codable {
-    let images: [Image]
+enum HTTPMethod {
+    case get, post, delete, put
 }
