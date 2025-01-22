@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetAdListUseCaseProtocol {
-    func getAdList() async -> Result<[Advert], DomainError>
+    func execute() async -> Result<[Advert], DomainError>
 }
 
 final class GetAdListUseCase: GetAdListUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetAdListUseCase: GetAdListUseCaseProtocol {
         self.repository = repository
     }
     
-    func getAdList() async -> Result<[Advert], DomainError> {
+    func execute() async -> Result<[Advert], DomainError> {
         return await self.repository.getAds()
     }
 }

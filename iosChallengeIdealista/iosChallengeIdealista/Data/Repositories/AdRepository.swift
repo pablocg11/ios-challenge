@@ -12,9 +12,9 @@ protocol AdRepositoryProtocol {
 }
 
 final class AdRepository: AdRepositoryProtocol {
-    private let apiDataSource: APIIdealistaDataSource
+    private let apiDataSource: APIIdealistaDataSourceProtocol
     
-    init(apiDataSource: APIIdealistaDataSource) {
+    init(apiDataSource: APIIdealistaDataSourceProtocol) {
         self.apiDataSource = apiDataSource
     }
     
