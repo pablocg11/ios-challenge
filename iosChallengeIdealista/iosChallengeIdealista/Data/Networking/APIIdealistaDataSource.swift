@@ -9,6 +9,7 @@ import Foundation
 
 protocol APIIdealistaDataSourceProtocol {
     func fetchAds() async -> Result<[AdvertDTO], HTTPClientError>
+    func fetchAdDetail() async -> Result<AdvertDetailDTO, HTTPClientError>
 }
 
 final class APIIdealistaDataSource: APIIdealistaDataSourceProtocol {
@@ -29,14 +30,32 @@ final class APIIdealistaDataSource: APIIdealistaDataSourceProtocol {
         case .success(let data):
             do {
                 let adList = try JSONDecoder().decode([AdvertDTO].self, from: data)
-                print(adList)
                 return .success(adList)
             } catch {
                 return .failure(.parsingError(error))
             }
 
         case .failure(let error):
-            return .failure(error)
+            return .failure(handleError(error: error))
+        }
+    }
+    
+    func fetchAdDetail() async -> Result<AdvertDetailDTO, HTTPClientError> {
+        let request = HTTPRequest(baseUrl: baseUrl,
+                                  path: "/detail.json",
+                                  method: .get)
+        
+        let result = await httpClient.makeRequest(request)
+        switch result {
+        case .success(let data):
+            do {
+                let adDetail = try JSONDecoder().decode(AdvertDetailDTO.self, from: data)
+                return .success(adDetail)
+            } catch {
+                return .failure(.parsingError(error))
+            }
+        case .failure(let error):
+            return .failure(handleError(error: error))
         }
     }
     

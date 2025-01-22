@@ -10,9 +10,9 @@ import Foundation
 struct AdvertDTO: Codable {
     let propertyCode: String
     let thumbnail: String
-    let floor: String?
+    let floor: String
     let price: Double
-    let priceInfo: PriceInfoDTO
+    let priceInfo: PriceInfoItemDTO
     let propertyType: String
     let operation: String
     let size: Double

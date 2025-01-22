@@ -9,6 +9,7 @@ import Foundation
 
 protocol AdRepositoryProtocol {
     func getAds() async -> Result<[Advert], DomainError>
+    func getAdDetail() async -> Result<AdvertDetail, DomainError>
 }
 
 final class AdRepository: AdRepositoryProtocol {
@@ -32,5 +33,17 @@ final class AdRepository: AdRepositoryProtocol {
         let adListDomain = adList.map { Advert(dto: $0) }
         
         return .success(adListDomain)
+    }
+    
+    func getAdDetail() async -> Result<AdvertDetail, DomainError> {
+        let result = await apiDataSource.fetchAdDetail()
+                
+        guard case .success(let adDetail) = result else {
+            return .failure(.generic)
+        }
+        
+        let adDetailDomain = AdvertDetail(dto: adDetail)
+        
+        return .success(adDetailDomain)
     }
 }

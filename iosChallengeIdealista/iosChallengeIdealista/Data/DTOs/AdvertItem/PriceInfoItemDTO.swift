@@ -1,5 +1,5 @@
 //
-//  PriceInfoDTO.swift
+//  PriceInfoItemDTO.swift
 //  iosChallengeIdealista
 //
 //  Created by Pablo Castro on 21/1/25.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PriceInfoDTO: Codable {
+struct PriceInfoItemDTO: Codable {
     let price: PriceDTO
 }

@@ -1,25 +1,23 @@
 //
-//  AdListFactory.swift
+//  AdDetailFactory.swift
 //  iosChallengeIdealista
 //
 //  Created by Pablo Castro on 22/1/25.
 //
 
-import Foundation
-
-final class AdListFactory {
+final class AdDetailFactory {
     
-    func createView() -> AdListView {
-        return AdListView(viewModel: createViewModel())
+    func createView() -> AdDetailView {
+        return AdDetailView(viewModel: createViewModel())
     }
     
-    private func createViewModel() -> AdListViewModel {
-        return AdListViewModel(getAdListUseCase: createAdListUseCase(),
-                               errorMapper: createErrorMapper())
+    private func createViewModel() -> AdDetailViewModel {
+        return AdDetailViewModel(getAdDetailUseCase: createGetAdDetailUseCase(),
+                                 errorMapper: createErrorMapper())
     }
     
-    private func createAdListUseCase() -> GetAdListUseCaseProtocol {
-        return GetAdListUseCase(repository: createRepository())
+    private func createGetAdDetailUseCase() -> GetAdDetailUseCaseProtocol {
+        return GetAdDetailUseCase(repository: createRepository())
     }
     
     private func createRepository() -> AdRepositoryProtocol {

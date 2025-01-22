@@ -28,11 +28,14 @@ struct AdListView: View {
                 VStack(alignment: .leading) {
                     ScrollView {
                         ForEach(viewModel.ads, id: \.propertyCode) { ad in
-                            Text(ad.description)
-                                .font(.callout)
-                                .lineLimit(3)
-                                .truncationMode(.tail)
-                                .padding()
+                            NavigationLink(destination: AdDetailFactory().createView()){
+                                Text(ad.description)
+                                    .font(.callout)
+                                    .lineLimit(3)
+                                    .truncationMode(.tail)
+                                    .multilineTextAlignment(.leading)
+                                    .padding()
+                            }
                         }
                     }
                     .scrollIndicators(.hidden)

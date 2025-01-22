@@ -10,9 +10,9 @@ import Foundation
 struct Advert: Codable {
     let propertyCode: String
     let thumbnail: String
-    let floor: String?
+    let floor: String
     let price: Double
-    let priceInfo: PriceInfo
+    let priceInfo: PriceInfoItem
     let propertyType: String
     let operation: String
     let size: Double
@@ -33,9 +33,9 @@ struct Advert: Codable {
     
     init(
         propertyCode: String,
-        thumbnail: String, floor: String?,
+        thumbnail: String, floor: String,
         price: Double,
-        priceInfo: PriceInfo,
+        priceInfo: PriceInfoItem,
         propertyType: String,
         operation: String,
         size: Double,
@@ -83,7 +83,7 @@ struct Advert: Codable {
         self.thumbnail = dto.thumbnail
         self.floor = dto.floor
         self.price = dto.price
-        self.priceInfo = PriceInfo(dto: dto.priceInfo)
+        self.priceInfo = PriceInfoItem(dto: dto.priceInfo)
         self.propertyType = dto.propertyType
         self.operation = dto.operation
         self.size = dto.size

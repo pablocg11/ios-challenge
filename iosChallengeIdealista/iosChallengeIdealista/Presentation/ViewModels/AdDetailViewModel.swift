@@ -1,43 +1,44 @@
 //
-//  AdListViewModel.swift
+//  AdDetailViewModel.swift
 //  iosChallengeIdealista
 //
-//  Created by Pablo Castro on 21/1/25.
+//  Created by Pablo Castro on 22/1/25.
 //
 
 import Foundation
 
-final class AdListViewModel: ObservableObject {
-    @Published var ads: [Advert] = []
+final class AdDetailViewModel: ObservableObject {
+    @Published var adDetail: AdvertDetail?
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     private let errorMapper: PresentationErrorMapper
     
-    private let getAdListUseCase: GetAdListUseCaseProtocol
+    private let getAdDetailUseCase: GetAdDetailUseCaseProtocol
     
-    init(getAdListUseCase: GetAdListUseCaseProtocol,
+    init(getAdDetailUseCase: GetAdDetailUseCaseProtocol,
          errorMapper: PresentationErrorMapper) {
-        self.getAdListUseCase = getAdListUseCase
+        self.getAdDetailUseCase = getAdDetailUseCase
         self.errorMapper = errorMapper
     }
     
     func onAppear() {
-        requestAds()
+        requestAdDetail()
     }
     
-    private func requestAds() {
+    private func requestAdDetail() {
         self.isLoading = true
+        
         Task {
-            let result = await getAdListUseCase.execute()
+            let result = await getAdDetailUseCase.execute()
             await handleResult(result)
         }
     }
     
     @MainActor
-    private func handleResult(_ result: Result<[Advert], DomainError>) async {
+    private func handleResult(_ result: Result<AdvertDetail, DomainError>) async {
         switch result {
-        case .success(let ads):
-            self.ads = ads
+        case .success(let adDetail):
+            self.adDetail = adDetail
             self.errorMessage = nil
         case .failure(let error):
             handleError(error: error)
