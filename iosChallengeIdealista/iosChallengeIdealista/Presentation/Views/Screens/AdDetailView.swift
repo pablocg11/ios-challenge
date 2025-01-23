@@ -15,7 +15,7 @@ struct AdDetailView: View {
     }
     
     var body: some View {
-        NavigationView {
+        VStack {
             if viewModel.isLoading {
                 ProgressView()
                     .padding()
@@ -26,20 +26,16 @@ struct AdDetailView: View {
             }
             else {
                 if let adDetail = viewModel.adDetail {
-                    Text(adDetail.propertyComment)
-                        .font(.callout)
-                        .lineLimit(3)
-                        .truncationMode(.tail)
-                        .padding()
+                    AdDetailSupportView(advert: adDetail)
                 }
                 else {
                     Text("No detail found")
                 }
             }
         }
-        .navigationTitle("Ad detail")
         .onAppear {
             viewModel.onAppear()
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }

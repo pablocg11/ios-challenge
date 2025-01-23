@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageEntity: Codable {
+struct ImageEntity: Codable, Hashable {
     let url: String
     let tag: String
     

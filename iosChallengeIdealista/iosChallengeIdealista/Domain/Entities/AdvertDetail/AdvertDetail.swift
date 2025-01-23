@@ -23,6 +23,26 @@ struct AdvertDetail: Codable {
     let moreCharacteristics: MoreCharacteristics
     let energyCertification: EnergyCertification
     
+    var operationFormatted: String {
+        switch operation {
+        case "sale":
+            return "En venta"
+        case "rent":
+            return "En alquiler"
+        default:
+            return "Desconocido"
+        }
+    }
+    
+    var extendedPropertyTypeFormatted: String {
+        switch extendedPropertyType {
+        case "flat":
+            return "Departamento"
+        default:
+            return "Desconocido"
+        }
+    }
+    
     init(
         adId: Int,
         price: Double,

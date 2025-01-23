@@ -17,7 +17,7 @@ struct EnergyCertification: Codable {
     }
     
     init(dto: EnergyCertificationDTO) {
-        self.title = dto.title
+        self.title = dto.title.uppercased()
         self.energyConsumption = EnergyConsumption(dto: dto.energyConsumption)
     }
 }

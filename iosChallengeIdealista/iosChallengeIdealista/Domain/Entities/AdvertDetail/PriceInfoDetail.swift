@@ -11,6 +11,11 @@ struct PriceInfoDetail: Codable {
     let amount: Double
     let currencySuffix: String
     
+    var formattedPrice: String {
+        let formattedAmount = NumberFormatter.priceFormatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+        return "\(formattedAmount) \(currencySuffix)"
+    }
+    
     init(amount: Double, currencySuffix: String) {
         self.amount = amount
         self.currencySuffix = currencySuffix

@@ -15,6 +15,6 @@ struct EnergyConsumption: Codable {
     }
     
     init(dto: EnergyConsumptionDTO) {
-        self.type = dto.type
+        self.type = dto.type.uppercased()
     }
 }

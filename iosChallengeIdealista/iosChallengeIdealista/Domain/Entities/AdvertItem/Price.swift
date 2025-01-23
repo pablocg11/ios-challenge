@@ -20,4 +20,10 @@ struct Price: Codable {
         self.amount = dto.amount
         self.currencySuffix = dto.currencySuffix
     }
+    
+    
+    var formattedPrice: String {
+        let formattedAmount = NumberFormatter.priceFormatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+        return "\(formattedAmount) \(currencySuffix)"
+    }
 }

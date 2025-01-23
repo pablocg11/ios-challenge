@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MoreCharacteristics: Codable {
+struct MoreCharacteristics: Codable, Hashable {
     let communityCosts: Double
     let roomNumber: Int
     let bathNumber: Int

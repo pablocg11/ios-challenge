@@ -31,6 +31,26 @@ struct Advert: Codable {
     let multimedia: Multimedia
     let features: Features
     
+    var operationFormatted: String {
+        switch operation.lowercased() {
+        case "sale":
+            return "En venta"
+        case "rent":
+            return "En alquiler"
+        default:
+            return "Desconocido"
+        }
+    }
+    
+    var propertyTypeFormatted: String {
+        switch propertyType.lowercased() {
+        case "flat":
+            return "Departamento"
+        default:
+            return "Desconocido"
+        }
+    }
+    
     init(
         propertyCode: String,
         thumbnail: String, floor: String,
@@ -84,13 +104,13 @@ struct Advert: Codable {
         self.floor = dto.floor
         self.price = dto.price
         self.priceInfo = PriceInfoItem(dto: dto.priceInfo)
-        self.propertyType = dto.propertyType
-        self.operation = dto.operation
+        self.propertyType = dto.propertyType.capitalizingFirstLetter()
+        self.operation = dto.operation.capitalizingFirstLetter()
         self.size = dto.size
         self.exterior = dto.exterior
         self.rooms = dto.rooms
         self.bathrooms = dto.bathrooms
-        self.address = dto.address
+        self.address = dto.address.capitalizingFirstLetter()
         self.province = dto.province
         self.municipality = dto.municipality
         self.district = dto.district
