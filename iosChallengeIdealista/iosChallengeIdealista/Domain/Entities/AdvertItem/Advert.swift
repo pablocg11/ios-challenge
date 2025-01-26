@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Advert: Codable {
+struct Advert: Identifiable, Equatable {
+    var id: String { propertyCode }
     let propertyCode: String
     let thumbnail: String
     let floor: String
@@ -30,30 +32,38 @@ struct Advert: Codable {
     let description: String
     let multimedia: Multimedia
     let features: Features
-    
-    var operationFormatted: String {
-        switch operation.lowercased() {
+
+    var favoriteDate: Date?
+
+    var favoriteDateFormatted: String? {
+        guard let date = favoriteDate else { return nil }
+        return DateFormatter.shortDateFormatter.string(from: date)
+    }
+
+    var operationFormatted: LocalizedStringKey {
+        switch operation {
         case "sale":
-            return "En venta"
+            return "sale"
         case "rent":
-            return "En alquiler"
+            return "rent"
         default:
-            return "Desconocido"
+            return "unknown"
         }
     }
-    
-    var propertyTypeFormatted: String {
-        switch propertyType.lowercased() {
+
+    var propertyTypeFormatted: LocalizedStringKey {
+        switch propertyType {
         case "flat":
-            return "Departamento"
+            return "flat"
         default:
-            return "Desconocido"
+            return "unknown"
         }
     }
-    
+
     init(
         propertyCode: String,
-        thumbnail: String, floor: String,
+        thumbnail: String,
+        floor: String,
         price: Double,
         priceInfo: PriceInfoItem,
         propertyType: String,
@@ -72,7 +82,9 @@ struct Advert: Codable {
         longitude: Double,
         description: String,
         multimedia: Multimedia,
-        features: Features
+        features: Features,
+        isFavorite: Bool = false,
+        favoriteDate: Date = Date()
     ) {
         self.propertyCode = propertyCode
         self.thumbnail = thumbnail
@@ -97,15 +109,15 @@ struct Advert: Codable {
         self.multimedia = multimedia
         self.features = features
     }
-    
+
     init(dto: AdvertDTO) {
         self.propertyCode = dto.propertyCode
         self.thumbnail = dto.thumbnail
         self.floor = dto.floor
         self.price = dto.price
         self.priceInfo = PriceInfoItem(dto: dto.priceInfo)
-        self.propertyType = dto.propertyType.capitalizingFirstLetter()
-        self.operation = dto.operation.capitalizingFirstLetter()
+        self.propertyType = dto.propertyType
+        self.operation = dto.operation
         self.size = dto.size
         self.exterior = dto.exterior
         self.rooms = dto.rooms

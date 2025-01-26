@@ -22,9 +22,21 @@ struct AdvertDetailDTO: Codable {
     let country: String
     let moreCharacteristics: MoreCharacteristicsDTO
     let energyCertification: EnergyCertificationDTO
-    
+
     enum CodingKeys: String, CodingKey {
         case adId = "adid"
-        case price, priceInfo, operation, propertyType, extendedPropertyType, homeType, state, multimedia, propertyComment, ubication, country, moreCharacteristics, energyCertification
+        case price,
+             priceInfo,
+             operation,
+             propertyType,
+             extendedPropertyType,
+             homeType,
+             state,
+             multimedia,
+             propertyComment,
+             ubication,
+             country,
+             moreCharacteristics,
+             energyCertification
     }
 }

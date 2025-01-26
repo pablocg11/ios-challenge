@@ -9,27 +9,24 @@ import SwiftUI
 
 struct AdDetailView: View {
     @ObservedObject var viewModel: AdDetailViewModel
-    
+
     init(viewModel: AdDetailViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         VStack {
             if viewModel.isLoading {
                 ProgressView()
                     .padding()
-            }
-            else if let error = viewModel.errorMessage {
+            } else if let error = viewModel.errorMessage {
                 Text(error)
                     .foregroundStyle(.red)
-            }
-            else {
+            } else {
                 if let adDetail = viewModel.adDetail {
                     AdDetailSupportView(advert: adDetail)
-                }
-                else {
-                    Text("No detail found")
+                } else {
+                    EmptyResultView()
                 }
             }
         }

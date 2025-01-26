@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct AdvertDetail: Codable {
+struct AdvertDetail {
     let adId: Int
     let price: Double
     let priceInfo: PriceInfoDetail
@@ -22,27 +23,27 @@ struct AdvertDetail: Codable {
     let country: String
     let moreCharacteristics: MoreCharacteristics
     let energyCertification: EnergyCertification
-    
-    var operationFormatted: String {
+
+    var operationFormatted: LocalizedStringKey {
         switch operation {
         case "sale":
-            return "En venta"
+            return "sale"
         case "rent":
-            return "En alquiler"
+            return "rent"
         default:
-            return "Desconocido"
+            return "unknown"
         }
     }
-    
-    var extendedPropertyTypeFormatted: String {
+
+    var propertyTypeFormatted: LocalizedStringKey {
         switch extendedPropertyType {
         case "flat":
-            return "Departamento"
+            return "flat"
         default:
-            return "Desconocido"
+            return "unknown"
         }
     }
-    
+
     init(
         adId: Int,
         price: Double,
@@ -74,7 +75,7 @@ struct AdvertDetail: Codable {
         self.moreCharacteristics = moreCharacteristics
         self.energyCertification = energyCertification
     }
-    
+
     init(dto: AdvertDetailDTO) {
         self.adId = dto.adId
         self.price = dto.price

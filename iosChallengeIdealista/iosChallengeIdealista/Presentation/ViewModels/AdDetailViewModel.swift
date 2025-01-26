@@ -12,28 +12,28 @@ final class AdDetailViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     private let errorMapper: PresentationErrorMapper
-    
+
     private let getAdDetailUseCase: GetAdDetailUseCaseProtocol
-    
+
     init(getAdDetailUseCase: GetAdDetailUseCaseProtocol,
          errorMapper: PresentationErrorMapper) {
         self.getAdDetailUseCase = getAdDetailUseCase
         self.errorMapper = errorMapper
     }
-    
+
     func onAppear() {
         requestAdDetail()
     }
-    
+
     private func requestAdDetail() {
         self.isLoading = true
-        
+
         Task {
             let result = await getAdDetailUseCase.execute()
             await handleResult(result)
         }
     }
-    
+
     @MainActor
     private func handleResult(_ result: Result<AdvertDetail, DomainError>) async {
         switch result {
@@ -45,7 +45,7 @@ final class AdDetailViewModel: ObservableObject {
         }
         self.isLoading = false
     }
-    
+
     @MainActor
     private func handleError(error: DomainError?) {
         self.isLoading = false

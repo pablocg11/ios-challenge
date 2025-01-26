@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let homeView: HomeView
+
+    init(homeView: HomeView) {
+        self.homeView = homeView
+    }
+
     var body: some View {
         NavigationStack {
-            AdListFactory().createView()
+            homeView
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

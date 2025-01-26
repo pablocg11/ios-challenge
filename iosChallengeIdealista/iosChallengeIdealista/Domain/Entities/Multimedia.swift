@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Multimedia: Codable {
+struct Multimedia: Hashable {
     let images: [ImageEntity]
-    
+
     init(images: [ImageEntity]) {
         self.images = images
     }
-    
+
     init(dto: MultimediaDTO) {
         self.images = dto.images.map { ImageEntity(dto: $0) }
     }

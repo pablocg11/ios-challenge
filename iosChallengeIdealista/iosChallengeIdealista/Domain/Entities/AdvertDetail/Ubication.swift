@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Ubication: Codable {
+struct Ubication {
     let latitude: Double
     let longitude: Double
-    
+
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
     }
-    
+
     init(dto: UbicationDTO) {
         self.latitude = dto.latitude
         self.longitude = dto.longitude

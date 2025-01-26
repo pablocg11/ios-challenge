@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct EnergyCertification: Codable {
+struct EnergyCertification {
     let title: String
     let energyConsumption: EnergyConsumption
-    
+
     init(title: String, energyConsumption: EnergyConsumption) {
         self.title = title
         self.energyConsumption = energyConsumption
     }
-    
+
     init(dto: EnergyCertificationDTO) {
         self.title = dto.title.uppercased()
         self.energyConsumption = EnergyConsumption(dto: dto.energyConsumption)

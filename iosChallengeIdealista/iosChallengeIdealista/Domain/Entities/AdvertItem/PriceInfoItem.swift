@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct PriceInfoItem: Codable {
+struct PriceInfoItem: Hashable {
     let price: Price
-    
+
     init(price: Price) {
         self.price = price
     }
-    
+
     init(dto: PriceInfoItemDTO) {
         self.price = Price(dto: dto.price)
     }

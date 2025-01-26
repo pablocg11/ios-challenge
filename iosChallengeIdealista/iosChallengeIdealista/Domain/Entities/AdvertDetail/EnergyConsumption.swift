@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct EnergyConsumption: Codable {
+struct EnergyConsumption {
     let type: String
-    
+
     init(type: String) {
         self.type = type
     }
-    
+
     init(dto: EnergyConsumptionDTO) {
         self.type = dto.type.uppercased()
     }

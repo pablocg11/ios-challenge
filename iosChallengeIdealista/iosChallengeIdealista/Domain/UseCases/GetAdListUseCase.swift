@@ -13,11 +13,11 @@ protocol GetAdListUseCaseProtocol {
 
 final class GetAdListUseCase: GetAdListUseCaseProtocol {
     private let repository: AdRepositoryProtocol
-    
+
     init(repository: AdRepositoryProtocol) {
         self.repository = repository
     }
-    
+
     func execute() async -> Result<[Advert], DomainError> {
         return await self.repository.getAds()
     }

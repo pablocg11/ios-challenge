@@ -8,32 +8,39 @@
 import Foundation
 
 final class AdListFactory {
-    
-    func createView() -> AdListView {
-        return AdListView(viewModel: createViewModel())
+    private lazy var viewModel: AdListViewModel = {
+            return AdListViewModel(
+                getAdListUseCase: createGetAdListUseCase(),
+                errorMapper: createErrorMapper()
+            )
+        }()
+
+    func createView(userName: String) -> AdListView {
+        return AdListView(viewModel: viewModel,
+                          userName: userName,
+                          favoriteAdManager: createFavoriteAdManager())
     }
-    
-    private func createViewModel() -> AdListViewModel {
-        return AdListViewModel(getAdListUseCase: createAdListUseCase(),
-                               errorMapper: createErrorMapper())
+
+    private func createFavoriteAdManager() -> FavoriteAdManager {
+        return FavoriteAdManager()
     }
-    
-    private func createAdListUseCase() -> GetAdListUseCaseProtocol {
+
+    private func createGetAdListUseCase() -> GetAdListUseCaseProtocol {
         return GetAdListUseCase(repository: createRepository())
     }
-    
+
     private func createRepository() -> AdRepositoryProtocol {
-        return AdRepository(apiDataSource: createApiDataSource())
+        return AdRepository(dataSource: createApiDataSource())
     }
-    
+
     private func createApiDataSource() -> APIIdealistaDataSourceProtocol {
         return APIIdealistaDataSource(httpClient: createHTTPClient())
     }
-    
+
     private func createHTTPClient() -> HTTPClientProtocol {
         return HTTPClient(requestBuilder: HTTPRequestBuilder())
     }
-    
+
     private func createErrorMapper() -> PresentationErrorMapper {
         return PresentationErrorMapper()
     }

@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct PriceInfoDetail: Codable {
+struct PriceInfoDetail {
     let amount: Double
     let currencySuffix: String
-    
+
     var formattedPrice: String {
         let formattedAmount = NumberFormatter.priceFormatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
         return "\(formattedAmount) \(currencySuffix)"
     }
-    
+
     init(amount: Double, currencySuffix: String) {
         self.amount = amount
         self.currencySuffix = currencySuffix
     }
-    
+
     init(dto: PriceInfoDetailDTO) {
         self.amount = dto.amount
         self.currencySuffix = dto.currencySuffix

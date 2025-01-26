@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ImageEntity: Codable, Hashable {
+struct ImageEntity: Hashable {
     let url: String
     let tag: String
-    
+
     init(url: String, tag: String) {
         self.url = url
         self.tag = tag
     }
-    
+
     init(dto: ImageDTO) {
         self.url = dto.url
         self.tag = dto.tag

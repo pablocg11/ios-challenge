@@ -15,16 +15,16 @@ protocol APIIdealistaDataSourceProtocol {
 final class APIIdealistaDataSource: APIIdealistaDataSourceProtocol {
     private let httpClient: HTTPClientProtocol
     private let baseUrl = "https://idealista.github.io/ios-challenge"
-    
+
     init(httpClient: HTTPClientProtocol) {
         self.httpClient = httpClient
     }
-    
+
     func fetchAds() async -> Result<[AdvertDTO], HTTPClientError> {
         let request = HTTPRequest(baseUrl: baseUrl,
                                   path: "/list.json",
                                   method: .get)
-        
+
         let result = await httpClient.makeRequest(request)
         switch result {
         case .success(let data):
@@ -39,12 +39,12 @@ final class APIIdealistaDataSource: APIIdealistaDataSourceProtocol {
             return .failure(handleError(error: error))
         }
     }
-    
+
     func fetchAdDetail() async -> Result<AdvertDetailDTO, HTTPClientError> {
         let request = HTTPRequest(baseUrl: baseUrl,
                                   path: "/detail.json",
                                   method: .get)
-        
+
         let result = await httpClient.makeRequest(request)
         switch result {
         case .success(let data):
@@ -58,10 +58,10 @@ final class APIIdealistaDataSource: APIIdealistaDataSourceProtocol {
             return .failure(handleError(error: error))
         }
     }
-    
+
     private func handleError(error: HTTPClientError?) -> HTTPClientError {
         guard let error = error else { return .generic }
-        
+
         return error
     }
 }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Emissions: Codable {
+struct Emissions {
     let type: String
-    
+
     init(type: String) {
         self.type = type
     }
-    
+
     init(dto: EmissionsDTO) {
         self.type = dto.type
     }

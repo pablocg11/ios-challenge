@@ -12,13 +12,13 @@ struct HTTPRequest {
     let path: String
     let method: HTTPMethod
     let queryParams: [String: Any]?
-    
+
     init(
         baseUrl: String,
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        queryParams: [String : Any]? = nil
+        queryParams: [String: Any]? = nil
     ) {
         self.baseUrl = baseUrl
         self.path = path

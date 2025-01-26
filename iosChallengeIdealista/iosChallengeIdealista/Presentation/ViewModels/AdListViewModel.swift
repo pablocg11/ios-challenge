@@ -7,47 +7,46 @@
 
 import Foundation
 
-final class AdListViewModel: ObservableObject {
-    @Published var ads: [Advert] = []
+class AdListViewModel: ObservableObject {
+    @Published var adList: [Advert] = []
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
+
     private let errorMapper: PresentationErrorMapper
-    
     private let getAdListUseCase: GetAdListUseCaseProtocol
-    
+
     init(getAdListUseCase: GetAdListUseCaseProtocol,
          errorMapper: PresentationErrorMapper) {
         self.getAdListUseCase = getAdListUseCase
         self.errorMapper = errorMapper
     }
-    
+
     func onAppear() {
-        requestAds()
-    }
-    
-    private func requestAds() {
-        self.isLoading = true
+        isLoading = true
+
         Task {
             let result = await getAdListUseCase.execute()
             await handleResult(result)
         }
     }
-    
-    @MainActor
+
     private func handleResult(_ result: Result<[Advert], DomainError>) async {
         switch result {
         case .success(let ads):
-            self.ads = ads
-            self.errorMessage = nil
+            Task { @MainActor in
+                self.adList = ads
+                self.errorMessage = nil
+                self.isLoading = false
+            }
         case .failure(let error):
-            handleError(error: error)
+            handleError(error)
         }
-        self.isLoading = false
     }
-    
-    @MainActor
-    private func handleError(error: DomainError?) {
-        self.isLoading = false
-        self.errorMessage = errorMapper.map(error: error)
+
+    private func handleError(_ error: DomainError?) {
+        Task { @MainActor in
+            self.errorMessage = errorMapper.map(error: error)
+            self.isLoading = false
+        }
     }
 }

@@ -11,15 +11,15 @@ import MapKit
 struct MapView: View {
     var advert: AdvertDetail
     var body: some View {
-        ZStack(alignment: .topLeading){
+        ZStack(alignment: .topLeading) {
             Map {
-                Marker("Localización",coordinate: CLLocationCoordinate2D(latitude: advert.ubication.latitude,
+                Marker("", coordinate: CLLocationCoordinate2D(latitude: advert.ubication.latitude,
                                                           longitude: advert.ubication.longitude))
                 .tint(Constants.AppColors.primary)
             }
-            MainText(text: "Ubicación",
-                     font: .caption,
-                     color: .primaryText)
+            Text("ubication")
+                .font(.caption)
+                .foregroundStyle(.primaryText)
             .padding(8)
             .background(Constants.AppColors.secondaryLightOpacity)
             .cornerRadius(8)

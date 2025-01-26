@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct MoreCharacteristics: Codable, Hashable {
+struct MoreCharacteristics: Hashable {
     let communityCosts: Double
     let roomNumber: Int
     let bathNumber: Int
@@ -23,7 +24,14 @@ struct MoreCharacteristics: Codable, Hashable {
     let isDuplex: Bool
     let floor: String
     let status: String
-    
+
+    var formattedModificationDate: String {
+        let timeInSeconds = TimeInterval(modificationDate) / 1000
+        let date = Date(timeIntervalSince1970: timeInSeconds)
+
+        return DateFormatter.shortDateFormatter.string(from: date)
+    }
+
     init(
         communityCosts: Double,
         roomNumber: Int,
@@ -57,7 +65,7 @@ struct MoreCharacteristics: Codable, Hashable {
         self.floor = floor
         self.status = status
     }
-    
+
     init(dto: MoreCharacteristicsDTO) {
         self.communityCosts = dto.communityCosts
         self.roomNumber = dto.roomNumber
@@ -65,7 +73,7 @@ struct MoreCharacteristics: Codable, Hashable {
         self.exterior = dto.exterior
         self.housingFurnitures = dto.housingFurnitures
         self.agencyIsABank = dto.agencyIsABank
-        self.energyCertificationType = dto.energyCertificationType
+        self.energyCertificationType = dto.energyCertificationType.uppercased()
         self.flatLocation = dto.flatLocation
         self.modificationDate = dto.modificationDate
         self.constructedArea = dto.constructedArea

@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct iosChallengeIdealistaApp: App {
+struct IOSChallengeIdealistaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(homeView: HomeFactory().createView())
         }
     }
 }

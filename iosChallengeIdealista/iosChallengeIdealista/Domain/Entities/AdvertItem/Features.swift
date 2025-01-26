@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Features: Codable {
+struct Features: Hashable {
     let hasAirConditioning: Bool
     let hasBoxRoom: Bool
-    
+
     init(hasAirConditioning: Bool, hasBoxRoom: Bool) {
         self.hasAirConditioning = hasAirConditioning
         self.hasBoxRoom = hasBoxRoom
     }
-    
+
     init(dto: FeaturesDTO) {
         self.hasAirConditioning = dto.hasAirConditioning
         self.hasBoxRoom = dto.hasBoxRoom

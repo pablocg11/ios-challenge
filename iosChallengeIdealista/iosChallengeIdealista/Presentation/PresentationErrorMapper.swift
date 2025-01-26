@@ -12,7 +12,7 @@ final class PresentationErrorMapper {
         guard error == .emptyData else {
             return "Ad information not available. Try again later"
         }
-        
+
         return "Something went wrong. Try again later"
     }
 }

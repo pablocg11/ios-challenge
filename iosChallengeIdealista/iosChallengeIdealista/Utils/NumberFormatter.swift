@@ -13,7 +13,7 @@ extension NumberFormatter {
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = "."
         formatter.maximumFractionDigits = 0
-        formatter.locale = Locale(identifier: "es_ES") 
+        formatter.locale = Locale(identifier: "es_ES")
         return formatter
     }()
 }
