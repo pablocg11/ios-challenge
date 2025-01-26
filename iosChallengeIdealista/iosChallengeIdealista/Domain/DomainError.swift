@@ -9,5 +9,6 @@ import Foundation
 
 enum DomainError: Error {
     case emptyData
+    case networkError
     case generic
 }

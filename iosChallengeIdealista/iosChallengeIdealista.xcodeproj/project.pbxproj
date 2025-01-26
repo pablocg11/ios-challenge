@@ -10,7 +10,18 @@
 		D6E741672D43EEE0001126EE /* idealistaDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6E741652D43EEE0001126EE /* idealistaDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D664FA172D46864F00E92890 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D670C96A2D385777009D804D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D670C9712D385777009D804D;
+			remoteInfo = iosChallengeIdealista;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D664FA132D46864F00E92890 /* iosChallengeIdealistaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosChallengeIdealistaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D670C9722D385777009D804D /* iosChallengeIdealista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosChallengeIdealista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E741662D43EEE0001126EE /* idealistaDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = idealistaDataModel.xcdatamodel; sourceTree = "<group>"; };
 		D6E7416C2D43EF2D001126EE /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "iosChallengeIdealista/Domain/Entities/User+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -18,6 +29,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D664FA142D46864F00E92890 /* iosChallengeIdealistaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iosChallengeIdealistaTests;
+			sourceTree = "<group>";
+		};
 		D670C9742D385777009D804D /* iosChallengeIdealista */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = iosChallengeIdealista;
@@ -26,6 +42,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D664FA102D46864F00E92890 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D670C96F2D385777009D804D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,6 +66,7 @@
 				D6E7416D2D43EF2D001126EE /* User+CoreDataProperties.swift */,
 				D6E741652D43EEE0001126EE /* idealistaDataModel.xcdatamodeld */,
 				D670C9742D385777009D804D /* iosChallengeIdealista */,
+				D664FA142D46864F00E92890 /* iosChallengeIdealistaTests */,
 				D670C9732D385777009D804D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				D670C9722D385777009D804D /* iosChallengeIdealista.app */,
+				D664FA132D46864F00E92890 /* iosChallengeIdealistaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +83,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D664FA122D46864F00E92890 /* iosChallengeIdealistaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D664FA192D46864F00E92890 /* Build configuration list for PBXNativeTarget "iosChallengeIdealistaTests" */;
+			buildPhases = (
+				D664FA0F2D46864F00E92890 /* Sources */,
+				D664FA102D46864F00E92890 /* Frameworks */,
+				D664FA112D46864F00E92890 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D664FA182D46864F00E92890 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D664FA142D46864F00E92890 /* iosChallengeIdealistaTests */,
+			);
+			name = iosChallengeIdealistaTests;
+			packageProductDependencies = (
+			);
+			productName = iosChallengeIdealistaTests;
+			productReference = D664FA132D46864F00E92890 /* iosChallengeIdealistaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D670C9712D385777009D804D /* iosChallengeIdealista */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D670C9802D38577A009D804D /* Build configuration list for PBXNativeTarget "iosChallengeIdealista" */;
@@ -91,6 +139,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					D664FA122D46864F00E92890 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D670C9712D385777009D804D;
+					};
 					D670C9712D385777009D804D = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -114,11 +166,19 @@
 			projectRoot = "";
 			targets = (
 				D670C9712D385777009D804D /* iosChallengeIdealista */,
+				D664FA122D46864F00E92890 /* iosChallengeIdealistaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D664FA112D46864F00E92890 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D670C9702D385777009D804D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +212,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D664FA0F2D46864F00E92890 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D670C96E2D385777009D804D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,7 +229,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D664FA182D46864F00E92890 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D670C9712D385777009D804D /* iosChallengeIdealista */;
+			targetProxy = D664FA172D46864F00E92890 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D664FA1A2D46864F00E92890 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y8HB8QQ3X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pablocastro.apps.iosChallengeIdealistaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosChallengeIdealista.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iosChallengeIdealista";
+			};
+			name = Debug;
+		};
+		D664FA1B2D46864F00E92890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y8HB8QQ3X5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pablocastro.apps.iosChallengeIdealistaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosChallengeIdealista.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iosChallengeIdealista";
+			};
+			name = Release;
+		};
 		D670C97E2D38577A009D804D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -359,6 +480,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D664FA192D46864F00E92890 /* Build configuration list for PBXNativeTarget "iosChallengeIdealistaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D664FA1A2D46864F00E92890 /* Debug */,
+				D664FA1B2D46864F00E92890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D670C96D2D385777009D804D /* Build configuration list for PBXProject "iosChallengeIdealista" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Multimedia: Hashable {
+struct Multimedia: Hashable, Equatable {
     let images: [ImageEntity]
 
     init(images: [ImageEntity]) {

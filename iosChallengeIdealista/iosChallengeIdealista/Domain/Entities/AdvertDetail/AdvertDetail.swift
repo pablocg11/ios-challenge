@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AdvertDetail {
+struct AdvertDetail: Equatable {
     let adId: Int
     let price: Double
     let priceInfo: PriceInfoDetail

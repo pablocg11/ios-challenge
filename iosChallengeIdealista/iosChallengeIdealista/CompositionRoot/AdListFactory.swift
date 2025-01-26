@@ -9,11 +9,11 @@ import Foundation
 
 final class AdListFactory {
     private lazy var viewModel: AdListViewModel = {
-            return AdListViewModel(
-                getAdListUseCase: createGetAdListUseCase(),
-                errorMapper: createErrorMapper()
-            )
-        }()
+        return AdListViewModel(
+            getAdListUseCase: createGetAdListUseCase(),
+            errorMapper: PresentationErrorMapper()
+        )
+    }()
 
     func createView(userName: String) -> AdListView {
         return AdListView(viewModel: viewModel,
@@ -30,7 +30,8 @@ final class AdListFactory {
     }
 
     private func createRepository() -> AdRepositoryProtocol {
-        return AdRepository(dataSource: createApiDataSource())
+        return AdRepository(dataSource: createApiDataSource(),
+                            errorMapper: DomainErrorMapper())
     }
 
     private func createApiDataSource() -> APIIdealistaDataSourceProtocol {
@@ -39,9 +40,5 @@ final class AdListFactory {
 
     private func createHTTPClient() -> HTTPClientProtocol {
         return HTTPClient(requestBuilder: HTTPRequestBuilder())
-    }
-
-    private func createErrorMapper() -> PresentationErrorMapper {
-        return PresentationErrorMapper()
     }
 }

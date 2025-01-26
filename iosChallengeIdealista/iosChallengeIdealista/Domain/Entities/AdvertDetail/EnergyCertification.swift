@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EnergyCertification {
+struct EnergyCertification: Equatable {
     let title: String
     let energyConsumption: EnergyConsumption
 

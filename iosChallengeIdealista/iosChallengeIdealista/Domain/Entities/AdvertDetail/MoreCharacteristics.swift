@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct MoreCharacteristics: Hashable {
+struct MoreCharacteristics: Hashable, Equatable {
     let communityCosts: Double
     let roomNumber: Int
     let bathNumber: Int

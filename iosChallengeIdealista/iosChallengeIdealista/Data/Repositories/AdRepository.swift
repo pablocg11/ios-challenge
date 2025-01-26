@@ -14,36 +14,40 @@ protocol AdRepositoryProtocol {
 
 final class AdRepository: AdRepositoryProtocol {
     private let dataSource: APIIdealistaDataSourceProtocol
+    private let errorMapper: DomainErrorMapper
 
-    init(dataSource: APIIdealistaDataSourceProtocol) {
+    init(dataSource: APIIdealistaDataSourceProtocol,
+         errorMapper: DomainErrorMapper) {
         self.dataSource = dataSource
+        self.errorMapper = errorMapper
     }
 
     func getAds() async -> Result<[Advert], DomainError> {
         let result = await dataSource.fetchAds()
 
-        guard case .success(let adList) = result else {
-            return .failure(.generic)
+        switch result {
+        case .success(let adList):
+            if adList.isEmpty {
+                return .failure(.emptyData)
+            }
+            let adListDomain = adList.map { Advert(dto: $0) }
+            return .success(adListDomain)
+
+        case .failure(let httpError):
+            return .failure(errorMapper.map(error: httpError))
         }
-
-        if adList.isEmpty {
-            return .failure(.emptyData)
-        }
-
-        let adListDomain = adList.map { Advert(dto: $0) }
-
-        return .success(adListDomain)
     }
 
     func getAdDetail() async -> Result<AdvertDetail, DomainError> {
         let result = await dataSource.fetchAdDetail()
 
-        guard case .success(let adDetail) = result else {
-            return .failure(.generic)
+        switch result {
+        case .success(let adDetail):
+            let adDetailDomain = AdvertDetail(dto: adDetail)
+            return .success(adDetailDomain)
+
+        case .failure(let httpError):
+            return .failure(errorMapper.map(error: httpError))
         }
-
-        let adDetailDomain = AdvertDetail(dto: adDetail)
-
-        return .success(adDetailDomain)
     }
 }

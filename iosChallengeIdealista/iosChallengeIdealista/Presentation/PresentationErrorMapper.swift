@@ -13,6 +13,10 @@ final class PresentationErrorMapper {
             return "Ad information not available. Try again later"
         }
 
+        guard error == .networkError else {
+            return "A network error occurred. Try again later"
+        }
+
         return "Something went wrong. Try again later"
     }
 }

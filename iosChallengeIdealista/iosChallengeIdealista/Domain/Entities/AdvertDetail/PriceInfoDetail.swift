@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PriceInfoDetail {
+struct PriceInfoDetail: Equatable {
     let amount: Double
     let currencySuffix: String
 

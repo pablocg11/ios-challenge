@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EnergyConsumption {
+struct EnergyConsumption: Equatable {
     let type: String
 
     init(type: String) {

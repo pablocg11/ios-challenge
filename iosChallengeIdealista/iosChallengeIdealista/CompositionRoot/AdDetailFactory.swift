@@ -13,7 +13,7 @@ final class AdDetailFactory {
 
     private func createViewModel() -> AdDetailViewModel {
         return AdDetailViewModel(getAdDetailUseCase: createGetAdDetailUseCase(),
-                                 errorMapper: createErrorMapper())
+                                 errorMapper: PresentationErrorMapper())
     }
 
     private func createGetAdDetailUseCase() -> GetAdDetailUseCaseProtocol {
@@ -21,7 +21,8 @@ final class AdDetailFactory {
     }
 
     private func createRepository() -> AdRepositoryProtocol {
-        return AdRepository(dataSource: createApiDataSource())
+        return AdRepository(dataSource: createApiDataSource(),
+                            errorMapper: DomainErrorMapper())
     }
 
     private func createApiDataSource() -> APIIdealistaDataSourceProtocol {
@@ -30,9 +31,5 @@ final class AdDetailFactory {
 
     private func createHTTPClient() -> HTTPClientProtocol {
         return HTTPClient(requestBuilder: HTTPRequestBuilder())
-    }
-
-    private func createErrorMapper() -> PresentationErrorMapper {
-        return PresentationErrorMapper()
     }
 }
