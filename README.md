@@ -3,6 +3,7 @@ Este proyecto es una prueba técnica desarrollada como parte de un proceso de se
 
 
 ## 🚀 Funcionalidades
+-	Inicio de Sesión con Nombre de Usuario: Introduce tu nombre de usuario para acceder a la aplicación, con persistencia local.
 - Exploración de Anuncios: Busca y navega por una lista de anuncios inmobiliarios.
 - Detalles del Anuncio: Consulta información detallada como precio, ubicación, características y más.
 - Gestión de Favoritos: Añade y elimina anuncios de tu lista de favoritos.
